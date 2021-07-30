@@ -35,6 +35,8 @@
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
+    </div>
+
 
 
     
@@ -109,61 +111,53 @@
         <div class="row">
           <div class="col-12 section-title text-center mb-5">
             <h2 class="d-block">Коллекция вин</h2>
-            <p>Вино — один из самых благородных и многогранных напитков в мире! Виноделие берёт своё начало с незапамятных времён. Вино упоминается в Библии и Коране, греческой и римской мифологии, где были свои боги вина (к примеру, Дионис). Стоит отметить, что почти у каждого народа существует своя легенда, повествующая о появлении божественного эликсира — вина.
+            <p>Вино — один из самых благородных и многогранных напитков в мире! Виноделие берёт своё начало с незапамятных
+              времён. Вино упоминается в Библии и Коране, греческой и римской мифологии, где были свои боги вина (к
+              примеру, Дионис). Стоит отметить, что почти у каждого народа существует своя легенда, повествующая о
+              появлении божественного эликсира — вина.
             </p>
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-4 mb-5 col-md-6">
-            <div class="wine_v_1 text-center pb-4 pt-5">
-              <img src="images/izabella.png" alt="Image" class="img-fluid">
-              <div>
-                <h3 class="heading mt-3 mb-3 text-dark">Изабелла</h3>
-                <p>
-                  Сорт винограда - Изабелла<br/>
-                  <span class="price">300 р.</span>
-                </p>
-              </div>
+          {% for product, wines in wine_dict %}
+            <div class="col-12 section-title text-center mb-5">
+              <h2 class="d-block">{{ product }}</h2>
             </div>
-          </div>
-          <div class="col-lg-4 mb-5 col-md-6">
-            <div class="wine_v_1 text-center pb-4 pt-5">
-              <img src="images/granatovyi_braslet.png" alt="Image" class="img-fluid">
-              <div>
-                <h3 class="heading mt-3 mb-3 text-dark">Гранатовый браслет</h3>
-                <p>
-                  Сорт винограда - Мускат розовый<br/>
-                  <span class="price">350 р.</span>
-                </p>
+            {%for wine in wines%}
+              <div class="col-lg-4 mb-5 col-md-6">
+                <div class="wine_v_1 text-center pb-4 pt-5">
+                  <img src="images/{{ wine.Картинка }}" alt="Image" class="img-fluid">
+                  {%  if wine.Акция %}
+                    <img src="assets/profitable.png"
+                         style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;">
+                  {% endif %}
+                  <div>
+                    <h3 class="heading mt-3 mb-3 text-dark">{{wine.Название}}</h3>
+                    {% if wine.Сорт%}
+                    <p>Сорт винограда - {{ wine.Сорт }}<br/></p>
+                    {% endif %}
+                    <p>
+                     <span class="price">{{ wine.Цена }} р.</span>
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="col-lg-4 mb-5 col-md-6">
-            <div class="wine_v_1 text-center pb-4 pt-5">
-              <img src="images/shardone.png" alt="Image" class="img-fluid">
-              <div>
-                <h3 class="heading mt-3 mb-3 text-dark">Шардоне</h3>
-                <p>
-                  Сорт винограда - Шардоне<br/>
-                  <span class="price">350 р.</span>
-                </p>
-              </div>
-            </div>
-          </div>
+              {% endfor %}
+          {% endfor %}
         </div>
       </div>
     </div>
 
     <div class="hero-2" style="background-image: url('assets/hero_2.jpg');">
-    <div><a id="feedback"></a></div>
-     <div class="container">
-        <div class="row justify-content-center text-center align-items-center">
-          <div class="col-md-8">
-            <h2 style="font-size: 3rem;">проверено временем</h2>
-            <span class="sub-title" style="font-size: 2.5rem;">Уже 90 лет с вами</span>
+      <div><a id="feedback"></a></div>
+       <div class="container">
+          <div class="row justify-content-center text-center align-items-center">
+            <div class="col-md-8">
+              <h2 style="font-size: 3rem;">проверено временем</h2>
+              <span class="sub-title" style="font-size: 2.5rem;">Уже {{wine_age}} с вами</span>
+            </div>
           </div>
         </div>
-      </div>
     </div>
 
     <div class="site-section bg-light">
@@ -182,7 +176,7 @@
             <img src="assets/person_2.jpg" alt="Фото">
             <p>&ldquo;Вино столовое полусладкое белое Кокур - неплохое вино, молодое, невыдержанное. Особенности технологии его производства и дают, очевидно, такой вкус.
               Вкус - довольно простой, несложный, но приятный. Невыдержанное вино в чем-то близко к молодому виноградному соку.
-              Пьется легко, вкус приятно- округлый, нежный.&rdquo;</p>
+              Пьется легко, вкус приятно-округлый, нежный.&rdquo;</p>
             <p class="small text-primary">&mdash; Михаил Яковлев</p>
           </blockquote>
           <blockquote class="testimony">
@@ -219,9 +213,6 @@
                     Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
-
-
-
             </div>
           </div>
         </div>
@@ -229,12 +220,12 @@
     </div>
     
 
-  </div>
   <!-- .site-wrap -->
 
 
   <!-- loader -->
-  <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#ff5e15"/></svg></div>
+  <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#ff5e15"/></svg>
+  </div>
 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
