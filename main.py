@@ -19,9 +19,9 @@ def get_path(path):
 
 
 def count_age():
-    open_date = 1920
-    current_date = datetime.date.today().year
-    age = current_date - open_date
+    open_year = 1920
+    current_year = datetime.date.today().year
+    age = current_year - open_year
     if age == 1 or age % 100 == 1:
         return str(age) + ' год'
     if age == 2 or age % 100 == 2 or age % 100 == 3 or age % 100 == 4:
@@ -30,11 +30,11 @@ def count_age():
         return str(age) + ' лет'
 
 
-def convert_to_dict(path_file):
-    excel_data = pandas.read_excel(
-        get_path(path_file), keep_default_na=False).to_dict(orient='records')
+def get_product(file_path):
+    data = pandas.read_excel(file_path,
+                             keep_default_na=False).to_dict(orient='records')
     wines = collections.defaultdict(list)
-    for wine in excel_data:
+    for wine in data:
         wines[wine['Категория']].append(wine)
     return sorted(wines.items())
 
@@ -45,8 +45,9 @@ def main():
         loader=FileSystemLoader('.'),
         autoescape=select_autoescape(['html', 'xml']))
     template = env.get_template('template.html')
-    path_file = os.getenv('EXCEL_DATA')
-    products = convert_to_dict(path_file)
+    path = os.getenv('FILE_DATA')
+    file_path = get_path(path)
+    products = get_product(file_path)
     company_age = count_age()
     rendered_page = template.render(company_age,
                                     products)
