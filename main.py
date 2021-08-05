@@ -11,7 +11,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 def get_path(path):
     parser = argparse.ArgumentParser(description='Программа получает путь к файлу')
-    parser.add_argument('-d', '--data', default=path, help='Файл с продукцией')
+    parser.add_argument('-f', '--file', default=path, help='Файл с продукцией')
     args = parser.parse_args()
     new_path = args.data
 
@@ -30,7 +30,7 @@ def count_age():
         return str(age) + ' лет'
 
 
-def get_product(file_path):
+def get_products(file_path):
     data = pandas.read_excel(file_path,
                              keep_default_na=False).to_dict(orient='records')
     wines = collections.defaultdict(list)
@@ -45,9 +45,9 @@ def main():
         loader=FileSystemLoader('.'),
         autoescape=select_autoescape(['html', 'xml']))
     template = env.get_template('template.html')
-    path = os.getenv('FILE_DATA')
+    path = os.getenv('FILE')
     file_path = get_path(path)
-    products = get_product(file_path)
+    products = get_products(file_path)
     company_age = count_age()
     rendered_page = template.render(company_age,
                                     products)
