@@ -1,36 +1,36 @@
-# Новое русское вино
+# New Russian wine
 
-Сайт магазина авторского вина "Новое русское вино".
+Website of the original wine store "New Russian Wine".
 
-## Запуск
+## Launch
 
-- Скачайте код
-- В корне папки создайте файл .env, в который впишите 
+- Download the code
+- In the root of the folder, create a .env file, in which write 
 ```python
- FILENAME='/путь к файлу.xlsx'
+  FILENAME='/path to file.xlsx'
 ```
-- Запустите сайт командой 
- ```python
-    python3 main.py
+- Launch the site with the command 
+  ```python
+     python3 main.py
 ```
 
-- Перейдите на сайт по адресу [http://127.0.0.1:8000](http://127.0.0.1:8000).
+- Go to the website at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
 
-## *Таблица продуктов*
+## *Product table*
 
-При необходимости добавления новых товаров, измените вложенный .xlsx файл или создайте новый файл по примеру:
+If you need to add new products, change the attached .xlsx file or create a new file according to the example:
 
-| **Категория**   | **Название**        | **Сорт**        | **Цена** | **Картинка**             | **Акция**            |
+| **Category**    |      **Name**       |   **Variety**   | **Price**|      **Picture**         |    **Promotion**     |
 | --------------- | ------------------- | --------------- | -------- | ------------------------ | -------------------- |
-| Белые вина      | Белая леди          | Дамский пальчик | 399      | belaya_ledi.png          | Выгодное предложение |
+| Белые вина      | Белая леди          | Дамский пальчик | 399      | belaya_ledi.png          |      Best Offer      |
 | Напитки         | Коньяк классический |                 | 350      | konyak_klassicheskyi.png |                      |
 | Красные вина    | Киндзмараули        | Саперави        | 550      | kindzmarauli.png         |                      |
 
-- При добавлении строчки "Выгодное предложение" на изображении продукта появится соответствующая плашка. 
-- Категории Акция и Сорт являются опциональными, остальные категории обязательны для заполнения.
+- When you add the line “Best offer”, a corresponding plate will appear on the product image. 
+- The categories Promotion and Variety are optional, the remaining categories are required.
 
 
-## Цели проекта
+## Project goals
 
-Код написан в учебных целях — это урок в курсе по Python и веб-разработке на сайте [Devman](https://dvmn.org).
+The code is written for educational purposes - this is a lesson in the course on Python and web development on the site [Devman](https://dvmn.org).
